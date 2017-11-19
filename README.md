@@ -84,7 +84,7 @@ Git periodically executes its garbage collection mechanism so all objects marked
 ```
 git gc
 ```
-This triggers the git garbage collector. Try running ```show-all-objects``` again!
+This triggers the git garbage collector. Try running ```show-all-objects``` again! This time around we've lost our commits blobs trees etc., why? 
 
 
 Step 1
