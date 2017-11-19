@@ -1,7 +1,19 @@
 #!/bin/bash
 
 declare -a users=("Priya" "Steve" "Gurmit" "Connor" "Patrick" "Giulio" "Jyothi" "Gareth" "Mike" "Ioannis")
-declare -a repoTypes=("Repo")
+
+function setup_bare_repository {
+	PREV_DIR=$(pwd)
+	REPO_DIR=$1
+	REPO_USER=$2
+	mkdir $REPO_DIR
+	cd $REPO_DIR
+
+	git init --bare
+	git gc
+
+	cd $PREV_DIR
+}
 
 function setup_repository {
 	PREV_DIR=$(pwd)
@@ -48,16 +60,14 @@ function generate_repositories {
 	rm -rf $TARGET_DIR
 	mkdir $TARGET_DIR
 
+	repoType="Repo"
 	for user in "${users[@]}"
 	do
-		for repoType in "${repoTypes[@]}"
-		do
-			echo "Generating $TARGET_DIR/$user$repoType"
-			REPO_DIR="$TARGET_DIR/$user$repoType"
-			setup_repository $REPO_DIR $user
-		done
+		echo "Generating $TARGET_DIR/$user$repoType"
+		REPO_DIR="$TARGET_DIR/$user$repoType"
+		setup_repository $REPO_DIR $user
 	done
-	setup_repository "$TARGET_DIR/origin"
+	setup_bare_repository "$TARGET_DIR/origin"
 }
 
 CWD=$(pwd)
