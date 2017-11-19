@@ -54,7 +54,7 @@ function generate_repositories {
 }
 
 CWD=$(pwd)
-TARGET_DIR=$(pwd)
+TARGET_DIR=$(pwd)/TutorialRepositories
 
 if [ $# -lt 1 ]; then
 	generate_repositories
