@@ -38,6 +38,7 @@ Step 4
 Useful aliases
 Add the following to your .gitconfig file (you can find this file @ C:\Users\your_user_name\.gitconfig)
 
+```{r, engine='bash'}
 [alias]
   st = status
   sta = status
@@ -50,7 +51,7 @@ Add the following to your .gitconfig file (you can find this file @ C:\Users\you
   type = cat-file -t
   detach = checkout --detach
   previous = checkout -
-
+```
 Copy the show-all-objects to C:\Program Files\Git\mingw64\bin
 
 Everything in the .gitconfig aliases section will be available in git bash - and will come up as a suggestion 
