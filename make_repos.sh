@@ -6,12 +6,29 @@ declare -a repoTypes=("Repo")
 function setup_repository {
 	PREV_DIR=$(pwd)
 	REPO_DIR=$1
+	REPO_USER=$2
 	mkdir $REPO_DIR
 	cd $REPO_DIR
 	git init
-	cp "$PREV_DIR/Instructions.txt" Instructions.txt	
-	git add .
-	git commit -m "Initial commit"
+	echo "Initial commit" > README.md
+	git add README.md
+	git commit -m "0 - ${REPO_USER} Initial commit"
+	
+	cp "$PREV_DIR/files/proxy.go" proxy.go	
+	git add proxy.go
+	git commit -m "1 - ${REPO_USER} added proxy.go"
+
+	cp "$PREV_DIR/files/box.js" box.js	
+	git add box.js
+	git commit -m "2 - ${REPO_USER} added box.js"
+
+	cp "$PREV_DIR/files/box_plot.html" box_plot.html	
+	git add box_plot.html
+	git commit -m "3 - ${REPO_USER} added box_plot.html"
+
+	cp "$PREV_DIR/files/HSO3.hpp" HSO3.hpp
+	git add HSO3.hpp
+	git commit -m "4 - ${REPO_USER} added HSO3.hpp"
 
 	cd $PREV_DIR
 }
@@ -28,7 +45,7 @@ function generate_repositories {
 		do
 			echo "Generating $TARGET_DIR/$user$repoType"
 			REPO_DIR="$TARGET_DIR/$user$repoType"
-			setup_repository $REPO_DIR
+			setup_repository $REPO_DIR $user
 		done
 	done
 	setup_repository "$TARGET_DIR/origin"
