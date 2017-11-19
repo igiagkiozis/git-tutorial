@@ -20,30 +20,40 @@ for p in pack/pack-*([0-9a-f]).idx ; do
     PackedObjectsCount=$((PackedObjectsCount + current_count))
 done
 
+function TagColorSelection() {
+  local object_type=$1
+  local __resultVariable=$2
+  local result=${NC}
+
+
+
+  eval $__resultVariable="'${result}'"
+}
+
 printf "${GREEN}Packed objects... ${PackedObjectsCount}${NC}\n"
 printf "${GREEN}===============================================\n${NC}"
 # packed objects
 for p in pack/pack-*([0-9a-f]).idx ; do
-    git show-index < $p | cut -f 2 -d ' ' | {
-    	while IFS= read -r current_object_hash
-    	do
-    		object_type=$(git cat-file -t $current_object_hash)
-            type_color=${LIGHT_BLUE}
-            if [ ${object_type} = "commit" ] 
-                then
-                type_color=${LIGHT_RED}
-            fi
-            if [ ${object_type} = "tree" ] 
-                then
-                type_color=${YELLOW}
-            fi
-            if [ ${object_type} = "blob" ] 
-                then
-                type_color=${LIGHT_GREEN}
-            fi            
-    		printf "${current_object_hash} ${type_color}${object_type}${NC}\n"
-    	done
-    }
+  git show-index < $p | cut -f 2 -d ' ' | {
+   while IFS= read -r current_object_hash
+   do
+    object_type=$(git cat-file -t $current_object_hash)
+    type_color=${NC}
+    if [ ${object_type} = "commit" ]; then
+      type_color=${LIGHT_RED}
+    fi
+    if [ ${object_type} = "tree" ]; then
+      type_color=${YELLOW}
+    fi
+    if [ ${object_type} = "blob" ]; then
+      type_color=${LIGHT_GREEN}
+    fi
+    if [ ${object_type} = "tag" ]; then
+      type_color=${LIGHT_BLUE}
+    fi    
+    printf "${current_object_hash} ${type_color}${object_type}${NC}\n"
+  done
+}
 done
 printf "${GREEN}===============================================\n${NC}"
 
@@ -58,19 +68,20 @@ printf "${RED}===============================================\n${NC}"
 for o in [0-9a-f][0-9a-f]/*([0-9a-f]) ; do
 	current_object_hash="${o/\/}"
 	object_type=$(git cat-file -t $current_object_hash)
-    type_color=${LIGHT_BLUE}
-    if [ ${object_type} = "commit" ] 
-        then
-        type_color=${LIGHT_RED}
+    type_color=${NC}
+    if [ ${object_type} = "commit" ]; then
+      type_color=${LIGHT_RED}
     fi
-    if [ ${object_type} = "tree" ] 
-        then
-        type_color=${YELLOW}
+    if [ ${object_type} = "tree" ]; then
+      type_color=${YELLOW}
     fi
-    if [ ${object_type} = "blob" ] 
-        then
-        type_color=${LIGHT_GREEN}
+    if [ ${object_type} = "blob" ]; then
+      type_color=${LIGHT_GREEN}
     fi
+    if [ ${object_type} = "tag" ]; then
+      type_color=${LIGHT_BLUE}
+    fi  
     printf "${current_object_hash} ${type_color}${object_type}${NC}\n"
 done
 printf "${RED}===============================================\n${NC}"
+
