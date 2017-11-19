@@ -25,7 +25,7 @@ Setup
 ```
 * Everything in the .gitconfig aliases section will be available in git bash - and will come up as a suggestion 
 if you mistype it! Also notice that in the event you forget an alias you can always use ```git show-aliases```, assuming you remember the ```show-aliases``` alias ;) 
-* Copy the ```show-all-objects``` script to ```C:\Program Files\Git\mingw64\bin```
+* Copy the ```all-objects``` script to ```C:\Program Files\Git\mingw64\bin```
 
 Some commands are commonly followed by ```git status```, just to verify that they did what we expected them to do. The most common of these commands are: 
 * add
@@ -71,9 +71,9 @@ and check that all objects are accounted for with
 ```
 git objects
 ```
-The above is equivalent to ```git rev-list --objects --all```. However, this command will only list objects that are reachable from the current commit. To see all objects in a git repository you can use the script ```show-all-objects``` you copied in the setup section. 
+The above is equivalent to ```git rev-list --objects --all```. However, this command will only list objects that are reachable from the current commit. To see all objects in a git repository you can use the script ```all-objects``` you copied in the setup section. 
 ```
-show-all-objects
+all-objects
 ```
 
 Now run
@@ -84,13 +84,13 @@ This is equivalent to ```git checkout -``` which in this case is also equivalent
 
 Run again 
 ```
-show-all-objects
+all-objects
 ```
 Git periodically executes its garbage collection mechanism so all objects marked as ```Loose``` are liable to be garbage collected at some time or another. Instead of waiting for this to happen automatically let's speed up things a litte: 
 ```
 git gc
 ```
-This triggers the git garbage collector. Try running ```show-all-objects``` again! This time around we've lost our commits blobs trees etc., why? 
+This triggers the git garbage collector. Try running ```all-objects``` again! This time around we've lost our commits blobs trees etc., why? 
 
 Moving Things in the Index, Working and Git Repo Areas
 ------------------------------------------------------
