@@ -30,6 +30,8 @@ function setup_repository {
 	git add HSO3.hpp
 	git commit -m "4 - ${REPO_USER} added HSO3.hpp"
 
+	git gc
+
 	cd $PREV_DIR
 }
 
