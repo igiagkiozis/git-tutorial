@@ -18,17 +18,24 @@ function setup_repository {
 	git add proxy.go
 	git commit -m "1 - ${REPO_USER} added proxy.go"
 
+	git checkout -b DEV-000
+	cp "$PREV_DIR/files/HSO3.hpp" HSO3.hpp
+	git add HSO3.hpp
+	git commit -m "0 - DEV-000 - ${REPO_USER} added HSO3.hpp"
+	echo "using some_function = void (*)(int a, int b);" >> super.hpp
+	git add super.hpp
+	git commit -m "1 - DEV-000 - ${REPO_USER} added super.hpp"
+	git checkout master
+
 	cp "$PREV_DIR/files/box.js" box.js	
 	git add box.js
 	git commit -m "2 - ${REPO_USER} added box.js"
 
+	git merge DEV-000 -m " ** - ${REPO_USER} merging DEV-000 into master"
+
 	cp "$PREV_DIR/files/box_plot.html" box_plot.html	
 	git add box_plot.html
 	git commit -m "3 - ${REPO_USER} added box_plot.html"
-
-	cp "$PREV_DIR/files/HSO3.hpp" HSO3.hpp
-	git add HSO3.hpp
-	git commit -m "4 - ${REPO_USER} added HSO3.hpp"
 
 	git gc
 
