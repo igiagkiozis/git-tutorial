@@ -181,6 +181,12 @@ git unstage-clean
 ```
 which is an alias for ```git reset --hard HEAD```.
 
+Lastly if you'd like to move the current branch to another commit, without touching the index and the working area you can use 
+```
+git move-current-branch <commit_hash or branch_name or tag_name>
+```
+**Note** this command is long as it's not often used and if you consider that it is a git alias you also have auto-completion. 
+
 ## Remotes 
 * Pick a pair 
 
