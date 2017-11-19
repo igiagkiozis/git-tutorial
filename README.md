@@ -125,9 +125,45 @@ git tag -d <tag_name>
 ```
 Check ```all-objects```, then run ```git super-gc``` and check again... everything is squeaky clean!
 
+* If you would like to list all tags use either ```git tag```,  ```git tag -l``` or ```git tag --list```.
 * Remember ```git detach``` with no arguments will make ```HEAD``` point to the current commit, however you can also use a commit hash, like so ```git detach baadf00d``` a branch ```git detach DEV-001``` or even a tag... you get the picture.
 
-## Moving Things in the Index, Working and Git Repo Areas
+## Moving Things
+So far we've seen how to move the ```HEAD``` around but let's say we didn't anticipate that our changes would be useless and now we want to move the current branch to a previous commit. 
+
+* Modify ```proxy.go``` in some way
+* Add and commit that change
+Run 
+```
+git glog
+```
+Now to go back to the previous commit use
+```
+git reset --hard <commit_hash>
+```
+Now have a look what happened to the objects in the git repository using 
+```
+all-objects
+```
+and 
+```
+git objects
+```
+What would happen if the git references expired and then the garbage collector kicked in. Think about it and then run
+```
+git super-gc
+``` 
+to find out. 
+
+Another common scenario is that we've staged a file to the index but now we don't want it to be part of the next commit. To remove a file that has never been added to the repository we can use ```git rm --cached <filename>```, however, this will not work as expected if another version of the file is in the repository. The most reliable way to unstage a file is to use ```git reset HEAD``` which is a shortcut for ```git reset --mixed HEAD```. There is also an alias for this command that is easier to remember 
+```
+git unstage <filename>
+```
+or simly
+```
+git unstage
+```
+to remove all changes from the index. Note that this command changes only the index and *NOT* the working area, so the modified files are still available. 
 
 
 ## Remotes 
