@@ -1,5 +1,4 @@
-Setup
------
+## Setup
 * Add the following to your .gitconfig file (you can find this file @ C:\Users\your_user_name\.gitconfig)
 ```{r, engine='bash'}
 [alias]
@@ -23,6 +22,11 @@ Setup
   	git status; \
   }; f"
   scheckout = "!git checkout \"$@\" && git status"
+  dangling = fsck --no-reflogs
+  super-gc="!f() {\
+  	git reflog expire --expire-unreachable=now --all; \
+  	git gc --prune=now; \
+  }; f"
 ```
 * Everything in the .gitconfig aliases section will be available in git bash - and will come up as a suggestion 
 if you mistype it! Also notice that in the event you forget an alias you can always use ```git show-aliases```, assuming you remember the ```show-aliases``` alias ;) 
@@ -40,12 +44,10 @@ See also
 * scheckout
 * sunstage
 
-Working Directory
------------------
+### Working Directory
 A repository has been created for you at ```\\nasbox\FILL_IN_THE_PATH\NameRepo```, open a git bash shell in your repo.
 
-Detaching your HEAD
--------------------
+## Detaching your HEAD
 Detaching the HEAD pointer can be quite useful.
 ```
 git checkout --detach
@@ -94,11 +96,22 @@ git gc
 ```
 This triggers the git garbage collector. Try running ```all-objects``` again! This time around we've lost our commits blobs trees etc., why? 
 
-Moving Things in the Index, Working and Git Repo Areas
-------------------------------------------------------
+### Tags to the rescue
+Tags have many use cases, one of these is to keep track of experiments in your local repo without polluting the main repository. Tags come in two flavours, annotated and lightweight. Personally I prefer using annotated tags as they're much easier to track in the git object database. That said, functionally both are virtually equivalent. 
 
-Remotes 
--------
+Let's see how we can leverage them. 
+
+* Detach the HEAD
+* Create a file along with a new commit
+* Create a tag
+```
+git tag -a <tag_name> -m "Here goes the message you'd like to include with the tag"
+```
+
+## Moving Things in the Index, Working and Git Repo Areas
+
+
+## Remotes 
 * Pick a pair 
 
 Add their repository using 
