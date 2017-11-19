@@ -10,6 +10,7 @@
   objects = rev-list --objects --all --pretty=oneline
   gobjects = rev-list --objects --all --graph --pretty=oneline
   unstage = reset HEAD
+  unstage-clean = reset --hard HEAD
   sunstage = "!git reset HEAD \"$@\" && git status"
   content = cat-file -p
   type = cat-file -t
@@ -27,6 +28,7 @@
   	git reflog expire --expire-unreachable=now --all; \
   	git gc --prune=now; \
   }; f"
+  move-current-branch = reset --soft
 ```
 * Everything in the .gitconfig aliases section will be available in git bash - and will come up as a suggestion 
 if you mistype it! Also notice that in the event you forget an alias you can always use ```git show-aliases```, assuming you remember the ```show-aliases``` alias ;) 
