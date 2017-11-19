@@ -108,6 +108,23 @@ Let's see how we can leverage them.
 git tag -a <tag_name> -m "Here goes the message you'd like to include with the tag"
 ```
 
+Now run
+```
+git previous
+```
+Check what ```all-objects``` has to say.
+Then
+```
+git gc
+```
+Check ```all-objects``` once more.
+
+Suppose you no longer need the changes that the tag points to
+```
+git tag -d <tag_name>
+```
+Check ```all-objects```, then run ```git super-gc``` and check again... everything is squeaky clean!
+
 ## Moving Things in the Index, Working and Git Repo Areas
 
 
