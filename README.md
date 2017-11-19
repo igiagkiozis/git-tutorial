@@ -130,7 +130,7 @@ Check ```all-objects```, then run ```git super-gc``` and check again... everythi
 * If you would like to list all tags use either ```git tag```,  ```git tag -l``` or ```git tag --list```.
 * Remember ```git detach``` with no arguments will make ```HEAD``` point to the current commit, however you can also use a commit hash, like so ```git detach baadf00d``` a branch ```git detach DEV-001``` or even a tag... you get the picture.
 
-## Moving Things
+## Moving Things and Fixing Mistakes
 So far we've seen how to move the ```HEAD``` around but let's say we didn't anticipate that our changes would be useless and now we want to move the current branch to a previous commit. 
 
 * Modify ```proxy.go``` in some way
@@ -189,14 +189,14 @@ git move-current-branch <commit_hash or branch_name or tag_name>
 ```
 **Note** this command is long as it's not often used and if you consider that it is a git alias you also have auto-completion. 
 
-## Remotes 
-* Pick a pair 
+### Remotes
+* Pick a pair
 
 Add their repository using 
 ```
 git remote add <remote_name> <git_remote_URL>
 ```
-Make sure you include the full path to the repository.
+For ```<git_remote_URL>``` you can use full or relative path, it is advisable to use the full path, however, in this case to save some typing just use a relative path ```git remote add <remote_name> ../UserNameRepo/```.
 
 For reference all the generated repositories are: 
 * ConnorRepo
@@ -211,9 +211,8 @@ For reference all the generated repositories are:
 * SteveRepo
 * origin
 
-Create a file with your name + ".txt" and add some text to it (anything).
-Stage it and commit it.
-Push this to the origin repo.
+* Create a file with your name + ".txt" and add some text to it (anything).
+* Stage it and commit it.
 
 ```
 git merge --allow-unrelated-repositories <all repositories separated with spaces>
