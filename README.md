@@ -18,7 +18,7 @@ Setup
   detach = checkout --detach
   previous = checkout -
 ```
-* Copy the show-all-objects script to C:\Program Files\Git\mingw64\bin
+* Copy the ```show-all-objects``` script to C:\Program Files\Git\mingw64\bin
 
 Step 1
 ------
