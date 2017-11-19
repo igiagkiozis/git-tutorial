@@ -130,7 +130,7 @@ Check ```all-objects```, then run ```git super-gc``` and check again... everythi
 * If you would like to list all tags use either ```git tag```,  ```git tag -l``` or ```git tag --list```.
 * Remember ```git detach``` with no arguments will make ```HEAD``` point to the current commit, however you can also use a commit hash, like so ```git detach baadf00d``` a branch ```git detach DEV-001``` or even a tag... you get the picture.
 
-## Moving Things
+## Moving Things and Fixing Mistakes
 So far we've seen how to move the ```HEAD``` around but let's say we didn't anticipate that our changes would be useless and now we want to move the current branch to a previous commit. 
 
 * Modify ```proxy.go``` in some way
@@ -189,14 +189,38 @@ git move-current-branch <commit_hash or branch_name or tag_name>
 ```
 **Note** this command is long as it's not often used and if you consider that it is a git alias you also have auto-completion. 
 
-## Remotes 
-* Pick a pair 
+### Interactive Rebase
+Before we go on with this part it's advisable that you associate a different editor for git, see [this](https://help.github.com/articles/associating-text-editors-with-git/#platform-windows) for details.
+
+Add the following files, each in their own commit: 
+* interactive1.txt - Contents: "interactive 1" - Commit message same as contents
+* interactive2.txt - Contents: "interactive 2" - Same
+* interactive2.txt - Contents: "interactive 2" - Same
+
+Type
+```
+git rebase -i <hash_of_first_commit>
+```
+and enjoy rewriting history!
+
+### Reflog - Git's reference log
+Everything you do in git is recorded in the reflog, so if anything happens during changing history you can use the previous commands in conjuction with the reflog to trace what exactly happened and a way to revert the changes.
+Try the following: 
+```
+git reflog HEAD
+git show HEAD@{2}
+git reflog refs/heads/master
+```
+
+
+### Remotes
+* Pick a pair
 
 Add their repository using 
 ```
 git remote add <remote_name> <git_remote_URL>
 ```
-Make sure you include the full path to the repository.
+For ```<git_remote_URL>``` you can use full or relative path, it is advisable to use the full path, however, in this case to save some typing just use a relative path ```git remote add <remote_name> ../UserNameRepo/```.
 
 For reference all the generated repositories are: 
 * ConnorRepo
@@ -211,12 +235,20 @@ For reference all the generated repositories are:
 * SteveRepo
 * origin
 
-Create a file with your name + ".txt" and add some text to it (anything).
-Stage it and commit it.
-Push this to the origin repo.
+Create a branch
 
+Create a file with your name + ".txt" and add some text to it (anything).
+
+Stage it and commit it.
+
+Next fetch all branches from the remote
 ```
-git merge --allow-unrelated-repositories <all repositories separated with spaces>
+git branch --all
+git fetch <remote_name>
+git branch --all
+git merge --allow-unrelated-histories <remote_name>/<branch_name>
 ```
-Once successful check the number of parents in the merge commit. 
+
+#### Challenge
+All synchronise with origin - coordinate as you see fit.
 
