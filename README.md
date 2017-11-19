@@ -125,6 +125,8 @@ git tag -d <tag_name>
 ```
 Check ```all-objects```, then run ```git super-gc``` and check again... everything is squeaky clean!
 
+* Remember ```git detach``` with no arguments will make ```HEAD``` point to the current commit, however you can also use a commit hash, like so ```git detach baadf00d``` a branch ```git detach DEV-001``` or even a tag... you get the picture.
+
 ## Moving Things in the Index, Working and Git Repo Areas
 
 
