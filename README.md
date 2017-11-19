@@ -190,6 +190,8 @@ git move-current-branch <commit_hash or branch_name or tag_name>
 **Note** this command is long as it's not often used and if you consider that it is a git alias you also have auto-completion. 
 
 ### Interactive Rebase
+Before we go on with this part it's advisable that you associate a different editor for git, see [this](https://help.github.com/articles/associating-text-editors-with-git/#platform-windows) for details.
+
 Add the following files, each in their own commit: 
 * interactive1.txt - Contents: "interactive 1" - Commit message same as contents
 * interactive2.txt - Contents: "interactive 2" -               *
