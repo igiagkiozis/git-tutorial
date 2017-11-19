@@ -213,7 +213,8 @@ Create a file with your name + ".txt" and add some text to it (anything).
 Stage it and commit it.
 Push this to the origin repo.
 
->> git fetch from all repos except origin.
->> git merge with all repositories (in one command) (add --allow-unrelated-repositories)
+```
+git merge --allow-unrelated-repositories <all repositories separated with spaces>
+```
 Once successful check the number of parents in the merge commit. 
 
