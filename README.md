@@ -194,12 +194,24 @@ Before we go on with this part it's advisable that you associate a different edi
 
 Add the following files, each in their own commit: 
 * interactive1.txt - Contents: "interactive 1" - Commit message same as contents
-* interactive2.txt - Contents: "interactive 2" -               *
-* interactive2.txt - Contents: "interactive 2" -               *
+* interactive2.txt - Contents: "interactive 2" - Same
+* interactive2.txt - Contents: "interactive 2" - Same
 
+Type
+```
+git rebase -i <hash_of_first_commit>
+```
+and enjoy rewriting history!
 
-### Reflog
-Everything you do in git is recorded in the reflog, so if anything 
+### Reflog - Git's reference log
+Everything you do in git is recorded in the reflog, so if anything happens during changing history you can use the previous commands in conjuction with the reflog to trace what exactly happened and a way to revert the changes.
+Try the following: 
+```
+git reflog HEAD
+git show HEAD@{2}
+git reflog refs/heads/master
+```
+
 
 ### Remotes
 * Pick a pair
