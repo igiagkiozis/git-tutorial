@@ -92,8 +92,8 @@ git gc
 ```
 This triggers the git garbage collector. Try running ```show-all-objects``` again! This time around we've lost our commits blobs trees etc., why? 
 
-Moving Things in the Four Git Areas
------------------------------------
+Moving Things in the Index, Working and Git Repo Areas
+------------------------------------------------------
 
 Remotes 
 -------
