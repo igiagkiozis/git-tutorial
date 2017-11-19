@@ -189,6 +189,16 @@ git move-current-branch <commit_hash or branch_name or tag_name>
 ```
 **Note** this command is long as it's not often used and if you consider that it is a git alias you also have auto-completion. 
 
+### Interactive Rebase
+Add the following files, each in their own commit: 
+* interactive1.txt - Contents: "interactive 1" - Commit message same as contents
+* interactive2.txt - Contents: "interactive 2" -               *
+* interactive2.txt - Contents: "interactive 2" -               *
+
+
+### Reflog
+Everything you do in git is recorded in the reflog, so if anything 
+
 ### Remotes
 * Pick a pair
 
@@ -211,11 +221,20 @@ For reference all the generated repositories are:
 * SteveRepo
 * origin
 
-* Create a file with your name + ".txt" and add some text to it (anything).
-* Stage it and commit it.
+Create a branch
 
+Create a file with your name + ".txt" and add some text to it (anything).
+
+Stage it and commit it.
+
+Next fetch all branches from the remote
 ```
-git merge --allow-unrelated-repositories <all repositories separated with spaces>
+git branch --all
+git fetch <remote_name>
+git branch --all
+git merge --allow-unrelated-histories <remote_name>/<branch_name>
 ```
-Once successful check the number of parents in the merge commit. 
+
+#### Challenge
+All synchronise with origin - coordinate as you see fit.
 
