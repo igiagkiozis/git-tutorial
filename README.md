@@ -17,6 +17,7 @@ Setup
   detach = checkout --detach
   previous = checkout -
   sadd = "!git add \"$@\" && git status"
+  sad = "!git add \"$@\" && git status"
   scommit="!f() {\
   	git commit \"$@\"; \
   	git status; \
@@ -31,6 +32,7 @@ Some commands are commonly followed by ```git status```, just to verify that the
 * add
 * commit
 * checkout
+
 To speed things up aliases for these have been defined with the prefix ```s```, namely
 * ```git sadd somefile.txt``` is equivalent to ```git add somefile.txt && git status```
 See also
