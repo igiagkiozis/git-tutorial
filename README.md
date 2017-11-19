@@ -163,8 +163,23 @@ or simly
 ```
 git unstage
 ```
-to remove all changes from the index. Note that this command changes only the index and *NOT* the working area, so the modified files are still available. 
+to remove all changes from the index. Note that this command changes only the index and **NOT** the working area, so the modified files are still available. 
 
+Now let's say that we no longer need the changes in a file, to also remove these from the working area we can run the following after ```git unstage <filename>```: 
+```
+git checkout <filename> 
+```
+
+Lastly, say all the changes are useless and we'd like to unstage all changes to the index and clean the working area, a way to accomplish this is to run
+```
+git unstage
+git checkout .
+```
+done. An alternative would be 
+```
+git unstage-clean
+```
+which is an alias for ```git reset --hard HEAD```.
 
 ## Remotes 
 * Pick a pair 
