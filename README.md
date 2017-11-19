@@ -23,6 +23,8 @@ Setup
   }; f"
   scheckout = "!git checkout \"$@\" && git status"
 ```
+* Everything in the .gitconfig aliases section will be available in git bash - and will come up as a suggestion 
+if you mistype it! Also notice that in the event you forget an alias you can always use ```git show-aliases```, assuming you remember the ```show-aliases``` alias ;) 
 * Copy the ```show-all-objects``` script to ```C:\Program Files\Git\mingw64\bin```
 
 Some commands are commonly followed by ```git status```, just to verify that they did what we expected them to do. The most common of these commands are: 
@@ -35,6 +37,10 @@ See also
 * scommit
 * scheckout
 * sunstage
+
+Working Directory
+-----------------
+A repository has been created for you at ```\\nasbox\FILL_IN_THE_PATH\NameRepo```, open a git bash shell in your repo.
 
 Detaching your HEAD
 -------------------
@@ -87,10 +93,17 @@ git gc
 This triggers the git garbage collector. Try running ```show-all-objects``` again! This time around we've lost our commits blobs trees etc., why? 
 
 
-Step 1
-------
-Add to your remotes all the other repositories, including origin (excluding your own of course...).
-These are:
+Remotes 
+-------
+* Pick a pair 
+
+Add their repository using 
+```
+git remote add <remote_name> <git_remote_URL>
+```
+Make sure you include the full path to the repository.
+
+For reference all the generated repositories are: 
 * ConnorRepo
 * GarethRepo
 * GiulioRepo
@@ -102,27 +115,12 @@ These are:
 * PriyaRepo
 * SteveRepo
 * origin
-Make sure you include the full path to the repository.
-Use the following for this step:
->> git remote add <remote_name> <git_remote_URL>
 
-
-
-Step 2
-------
 Create a file with your name + ".txt" and add some text to it (anything).
 Stage it and commit it.
 Push this to the origin repo.
 
-Step 3 (Octopus merge)
-------
 >> git fetch from all repos except origin.
 >> git merge with all repositories (in one command) (add --allow-unrelated-repositories)
 Once successful check the number of parents in the merge commit. 
 
-Step 4
-------
-
-
-Everything in the .gitconfig aliases section will be available in git bash - and will come up as a suggestion 
-if you mistype it!
