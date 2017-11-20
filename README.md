@@ -47,7 +47,7 @@ See also
 * sunstage
 
 ### Working Directory
-A repository has been created for you at ```\\nasbox\FILL_IN_THE_PATH\NameRepo```, open a git bash shell in your repo.
+A repository has been created for you at ```\\woodhouse\ENGINEERING\DEV\Git\NameRepo```, open a git bash shell in your repo.
 
 ## Detaching your HEAD
 Detaching the HEAD pointer can be quite useful.
