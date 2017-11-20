@@ -1,5 +1,5 @@
 ## Setup
-* Add the following to your .gitconfig file (you can find this file @ C:\Users\your_user_name\.gitconfig)
+* Add the following to your .gitconfig file (you can find this file @ ```C:\Users\your_user_name\.gitconfig```)
 ```{r, engine='bash'}
 [alias]
   show-aliases = "!git config -l | grep alias | cut -c 7-"
